@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useId} from 'react'
 import VanillaTilt from 'vanilla-tilt'
 
 interface HTMLVanillaTiltElement extends HTMLDivElement {
@@ -49,6 +49,7 @@ function App() {
 		glare: true,
 		maxGlare: 0.5,
 	})
+	const id = useId()
 	return (
 		<div>
 			<button onClick={() => setShowTilt(s => !s)}>Toggle Visibility</button>
@@ -67,8 +68,8 @@ function App() {
 						}}
 					>
 						<div>
-							<label htmlFor="max">Max:</label>
-							<input id="max" name="max" type="number" defaultValue={25} />
+							<label htmlFor={id}>Max:</label>
+							<input id={id} name="max" type="number" defaultValue={25} />
 						</div>
 						<div>
 							<label htmlFor="speed">Speed:</label>
@@ -98,7 +99,7 @@ function App() {
 								onClick={() => setCount(c => c + 1)}
 							>
 								{count}
-							</button>
+							</button> 
 						</div>
 					</Tilt>
 				</div>
